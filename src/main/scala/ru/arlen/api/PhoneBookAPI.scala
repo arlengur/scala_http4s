@@ -1,10 +1,10 @@
 package ru.arlen.api
 
-import io.circe.{Decoder, Encoder}
 import io.circe.generic.auto._
-import org.http4s.{EntityDecoder, EntityEncoder, HttpRoutes}
+import io.circe.{Decoder, Encoder}
 import org.http4s.circe._
 import org.http4s.dsl.Http4sDsl
+import org.http4s.{EntityDecoder, EntityEncoder, HttpRoutes}
 import ru.arlen.dto._
 import ru.arlen.services.PhoneBookService
 import zio.RIO

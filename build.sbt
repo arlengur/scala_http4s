@@ -1,5 +1,4 @@
 scalacOptions += "-Ymacro-annotations"
-scalacOptions += "-Ylog-classpath"
 
 lazy val root = project
   .in(file("."))
@@ -11,10 +10,8 @@ lazy val root = project
     libraryDependencies ++= Dependencies.http4sServer,
     libraryDependencies ++= Dependencies.circe,
     libraryDependencies ++= Dependencies.zioConfig,
-    libraryDependencies ++= Dependencies.pureconfig,
     libraryDependencies ++= Seq(
-      Dependencies.kindProjector,
-      Dependencies.catsEffect
+      Dependencies.kindProjector
     ),
     addCompilerPlugin(Dependencies.kindProjector)
   )

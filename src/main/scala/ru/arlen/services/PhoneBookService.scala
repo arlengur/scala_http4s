@@ -1,12 +1,8 @@
 package ru.arlen.services
 
-import zio.Has
-import zio.Task
 import ru.arlen.dto._
-import zio.{ZLayer, ULayer}
-import zio.ZIO
-import zio.IO
 import zio.macros.accessible
+import zio.{Has, IO, Task, ULayer, ZIO, ZLayer}
 
 @accessible
 object PhoneBookService {
@@ -44,15 +40,4 @@ object PhoneBookService {
         ZIO.fromOption(map.remove(id))
     }
   )
-
-  // accessible или использовать макрос @accessible
-//  def find(phone: String): ZIO[PhoneBookService, Option[Nothing], (Int, PhoneRecord)] =
-//    ZIO.accessM(_.get.find(phone))
-//  def insert(phoneRecord: PhoneRecord): Task[Int] =
-//    ZIO.accessM(_.get.insert(phoneRecord))
-//  def update(id: Int, phoneRecord: PhoneRecord): Task[Unit] =
-//    ZIO.accessM(_.get.update(id, phoneRecord))
-//  def delete(id: Int): IO[Option[Nothing], PhoneRecord] =
-//    ZIO.accessM(_.get.delete(id))
-
 }

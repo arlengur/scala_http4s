@@ -1,21 +1,17 @@
 package ru.arlen
 
 import cats.effect.{ExitCode => CatsExitCode}
-import cats.syntax.all._
 import org.http4s.implicits._
-import zio.interop.catz._
-import configuration._
-import api.PhoneBookApi
-import org.http4s.server.blaze.BlazeServerBuilder
 import org.http4s.server.Router
-import org.http4s.HttpRoutes
+import org.http4s.server.blaze.BlazeServerBuilder
+import ru.arlen.api.PhoneBookApi
+import ru.arlen.configuration._
 import ru.arlen.services.PhoneBookService
 import ru.arlen.services.PhoneBookService.PhoneBookService
 import zio.blocking.Blocking
 import zio.clock.Clock
+import zio.interop.catz._
 import zio.{RIO, ZIO}
-import zio.config.ReadError
-import zio.{ZLayer, Layer}
 
 object Server {
   type AppEnvironment = PhoneBookService with Configuration with Clock with Blocking
