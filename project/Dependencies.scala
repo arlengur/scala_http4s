@@ -6,9 +6,13 @@ object Dependencies {
   object versions {
     lazy val KindProjectorVersion = "0.10.3"
     lazy val ZioVersion = "1.0.4"
-    lazy val Http4sVersion = "0.23.6"
+    lazy val Http4sVersion = "0.21.7"
     lazy val CirceVersion = "0.13.0"
+    lazy val LogbackVersion = "1.2.3"
   }
+
+  // logging
+  lazy val logback = "ch.qos.logback"  %  "logback-classic" % LogbackVersion
 
   lazy val kindProjector =
     "org.typelevel" %% "kind-projector" % KindProjectorVersion

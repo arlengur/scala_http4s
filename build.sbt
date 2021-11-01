@@ -11,7 +11,8 @@ lazy val root = project
     libraryDependencies ++= Dependencies.circe,
     libraryDependencies ++= Dependencies.zioConfig,
     libraryDependencies ++= Seq(
-      Dependencies.kindProjector
+      Dependencies.kindProjector,
+      Dependencies.logback
     ),
     addCompilerPlugin(Dependencies.kindProjector)
   )
