@@ -21,7 +21,7 @@ object PhoneBookService {
 
   val doomy: ULayer[PhoneBookService] = ZLayer.succeed(
     new Service {
-      var id = 0
+      var id  = 0
       val map = scala.collection.mutable.Map[Int, PhoneRecord]()
 
       def find(phone: String): IO[Option[Nothing], (Int, PhoneRecord)] =
@@ -36,8 +36,10 @@ object PhoneBookService {
       def update(id: Int, phoneRecord: PhoneRecord): Task[Unit] =
         ZIO.effect(map.update(id, phoneRecord))
 
-      def delete(id: Int): IO[Option[Nothing], PhoneRecord] =
-        ZIO.fromOption(map.remove(id))
+      def delete(id: Int): IO[Option[Nothing], PhoneRecord] = {
+        val maybeRecord = map.remove(id)
+        ZIO.fromOption(maybeRecord)
+      }
     }
   )
 }

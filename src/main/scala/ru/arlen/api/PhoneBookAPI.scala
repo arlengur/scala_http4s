@@ -21,24 +21,28 @@ class PhoneBookApi[R <: PhoneBookService.PhoneBookService] {
   implicit def jsonEncoder[A](implicit encoder: Encoder[A]): EntityEncoder[PhoneBookTask, A] = jsonEncoderOf[PhoneBookTask, A]
 
   def route = HttpRoutes.of[PhoneBookTask] {
-    case GET -> Root / phone => PhoneBookService.find(phone).foldM(
-      err => NotFound(),
-      result => Ok(result)
-    )
+    case GET -> Root / phone =>
+      PhoneBookService
+        .find(phone)
+        .foldM(
+          err => NotFound(),
+          result => Ok(result)
+        )
     case req @ POST -> Root =>
       (for {
         record <- req.as[PhoneRecord] // as сериализует body в case class
         result <- PhoneBookService.insert(record)
       } yield result)
-      .foldM(err => BadRequest(err.getMessage()), result => Ok(result))
-      case req @ PUT -> Root / id    => 
-          (for{
-          record <- req.as[PhoneRecord]
-          _ <- PhoneBookService.update(id.toInt, record)
+        .foldM(err => BadRequest(err.getMessage()), result => Ok(result))
+    case req @ PUT -> Root / id =>
+      (for {
+        record <- req.as[PhoneRecord]
+        _      <- PhoneBookService.update(id.toInt, record)
       } yield ())
-      .foldM(err => BadRequest(err.getMessage()), result => Ok(result))
-      case DELETE -> Root / id => 
-          PhoneBookService.delete(id.toInt)
-          .foldM(err => BadRequest("Not found"), result => Ok(result))
+        .foldM(err => BadRequest(err.getMessage()), result => Ok(result))
+    case DELETE -> Root / id =>
+      PhoneBookService
+        .delete(id.toInt)
+        .foldM(err => BadRequest("Not found"), result => Ok(result))
   }
 }
