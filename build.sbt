@@ -10,9 +10,11 @@ lazy val root = project
     libraryDependencies ++= Dependencies.http4sServer,
     libraryDependencies ++= Dependencies.circe,
     libraryDependencies ++= Dependencies.zioConfig,
+    libraryDependencies ++= Dependencies.doobie,
     libraryDependencies ++= Seq(
       Dependencies.kindProjector,
-      Dependencies.logback
+      Dependencies.logback,
+      Dependencies.liquibase
     ),
     addCompilerPlugin(Dependencies.kindProjector)
   )

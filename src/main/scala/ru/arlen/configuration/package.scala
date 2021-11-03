@@ -5,7 +5,11 @@ import zio.config.ReadError
 import zio.config.typesafe.TypesafeConfig
 
 package object configuration {
-  case class Config(host: String, port: Int)
+  case class Config(api: Api, liquibase: LiquibaseConfig, db: DbConfig)
+
+  case class Api(host: String, port: Int)
+  case class LiquibaseConfig(changeLog: String)
+  case class DbConfig(driver: String, url: String, user: String, password: String)
 
   import zio.config.magnolia.DeriveConfigDescriptor.descriptor
 
