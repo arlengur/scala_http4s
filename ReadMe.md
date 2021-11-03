@@ -1,6 +1,15 @@
 HTTP4S with ZIO
 
+Start postrges in docker container:
+```
+docker-compose -f ./docker-compose.yml up -d
+```
+
 You can execute next commands:
+- List all phones:
+```
+curl http://127.0.0.1:8080/phoneBook/list
+```
 - Search phone
 ```
 curl http://127.0.0.1:8080/phoneBook/4567
