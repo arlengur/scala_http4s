@@ -2,7 +2,6 @@
 .bloop
 .bsp
 .metals
-.vscode
 .scalafmt.conf
 project/target
 project/metals.sbt

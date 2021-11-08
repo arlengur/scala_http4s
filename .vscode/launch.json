@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "scala",
+      "name": "Launch Http4s",
+      "request": "launch",
+      "mainClass": "ru.arlen.Main",
+      "args": [],
+      "jvmOptions": [],
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
